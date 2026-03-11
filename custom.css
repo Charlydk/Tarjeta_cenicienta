@@ -121,7 +121,7 @@ h2 {
     margin: auto;
     overflow: hidden;
     border-radius: 24px;
-    background-color: #5D3A6B;
+    background-color: #000000;
     aspect-ratio: 3 / 4;
 }
 
@@ -233,3 +233,29 @@ h2 {
 .text-with-shadow span, .text-with-shadow {
     text-shadow: 5px 5px 10px rgb(0, 0, 0);
   }
+
+
+  /* 1. Animación de Brillo (Glow) */
+@keyframes resplandor {
+    0%, 100% { 
+        text-shadow: 0 0 10px rgba(255, 105, 180, 0.4), 0 0 20px rgba(255, 105, 180, 0.2); 
+    }
+    50% { 
+        text-shadow: 0 0 20px rgba(255, 105, 180, 0.9), 0 0 30px rgba(255, 105, 180, 0.6); 
+    }
+}
+
+.animar-brillo {
+    /* Le decimos que use la animación "resplandor", que dure 3 segundos, que sea suave y se repita infinito */
+    animation: resplandor 3s ease-in-out infinite;
+}
+
+/* 2. Animación de Flote (Floating) */
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); } /* Posición original */
+    50% { transform: translateY(-8px); }   /* Sube 8 píxeles a la mitad del tiempo */
+}
+
+.animar-flote {
+    animation: flotar 4s ease-in-out infinite;
+}
