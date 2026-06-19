@@ -5,32 +5,72 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro semitransparente */
+    overflow: hidden;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    z-index: 9999; /* Asegura que esté por encima de todo */
+    z-index: 9999;
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 0.9s ease, visibility 0.9s ease;
+    background-color: #050d1e;
 }
 .modal-overlay.hidden {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
-.modal-content {
-    background-color: white;
-    padding: 2.5rem; /* Aumentado el padding */
-    border-radius: 12px; /* Más redondeado */
+.welcome-content {
+    position: relative;
+    z-index: 1;
     text-align: center;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
-    max-width: 90%; /* Asegura que se adapte a pantallas pequeñas */
-    width: 450px; /* Ancho máximo */
-    transform: translateY(0);
-    transition: transform 0.4s ease-out;
+    padding: 2.5rem 2rem;
+    max-width: 680px;
+    width: 100%;
+    background: rgba(5, 13, 30, 0.35);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 215, 0, 0.1);
 }
-.modal-overlay.hidden .modal-content {
-    transform: translateY(-50px); /* Efecto de slide-up al cerrar */
+
+.welcome-content p,
+.welcome-content h1 {
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8), 0 1px 4px rgba(0, 0, 0, 0.9);
+}
+.welcome-btn-primary {
+    background-color: #FFD700;
+    color: #0d1b3e;
+    font-weight: 700;
+    padding: 0.85rem 2.2rem;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.welcome-btn-primary:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 30px rgba(255, 215, 0, 0.55);
+}
+.welcome-btn-ghost {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    padding: 0.85rem 2.2rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    transition: transform 0.25s ease, background 0.25s ease;
+}
+.welcome-btn-ghost:hover {
+    transform: scale(1.04);
+    background: rgba(255, 255, 255, 0.14);
 }
     
 /* Estilos CSS para el botón de música FLOTANTE (unificado) */
@@ -39,10 +79,10 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background-color: #FF69B4; /* Tu primary-pink */
-    color: white;
+    background-color: #FFD700;
+    color: #0d1b3e;
     border: none;
-    border-radius: 50%; /* Para hacerlo redondo */
+    border-radius: 50%;
     width: 50px;
     height: 50px;
     font-size: 1.5rem;
@@ -50,25 +90,27 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 1000; /* Asegura que esté por encima de otros elementos */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    /* Inicia oculto, se mostrará después de la interacción con el modal */
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4), 0 0 25px rgba(255, 215, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
     visibility: hidden;
     transform: scale(0.8);
 }
 #musicToggleButton:hover {
-    background-color: #E05BA0; /* Un tono un poco más oscuro al hacer hover */
-    transform: scale(1.05);
+    background-color: #E5C100;
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(255, 215, 0, 0.6), 0 0 35px rgba(255, 215, 0, 0.3);
 }
-#musicToggleButton.active { /* Clase para cuando el botón está visible y activo */
+#musicToggleButton.active {
     opacity: 1;
     visibility: visible;
     transform: scale(1);
 }
 #musicToggleButton.playing {
-    background-color: #4CAF50; /* Verde, por ejemplo, cuando está reproduciendo */
+    background-color: #4A90D9;
+    color: white;
+    box-shadow: 0 4px 15px rgba(74, 144, 217, 0.5), 0 0 25px rgba(74, 144, 217, 0.3);
 }
 
 
@@ -78,11 +120,10 @@ span {
 
 h2 {
     font-weight: bold;
-    text-shadow: 3px 2px 4px rgb(255, 0, 0);
-    background-color: rgba(0, 0, 0, 0.356);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 2px 2px 6px rgba(0, 0, 0, 0.9);
+    background-color: rgba(5, 13, 30, 0.55);
     padding: 5px 10px;
     border-radius: 8px;
-    
 }
 
 
@@ -197,28 +238,28 @@ h2 {
     84%, 100% { margin-left: -2100%; }
 }
 
-/* Animación para un pulso sutil y elegante */
-@keyframes pulse-effect {
-    0% {
-      transform: scale(1); /* Tamaño normal */
+/* Animación de brillo mágico para íconos de sección */
+@keyframes magic-glow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.3), 0 0 20px rgba(74, 144, 217, 0.15);
+        filter: brightness(1);
+        transform: scale(1);
     }
     50% {
-      transform: scale(1.1); /* Ligeramente más grande */
+        box-shadow: 0 0 25px rgba(255, 215, 0, 0.65), 0 0 50px rgba(255, 215, 0, 0.35), 0 0 8px rgba(74, 144, 217, 0.3);
+        filter: brightness(1.08);
+        transform: scale(1.06);
     }
-    100% {
-      transform: scale(1); /* Vuelve al tamaño normal */
-    }
-  }
-   
+}
 
   [data-aos].animate-pulse {
-    animation: pulse-effect 3s ease-in-out infinite;
+    animation: magic-glow 3s ease-in-out infinite;
   }
 
 
   .loader {
-    border: 8px solid #f3f3f320; /* Borde gris claro transparente */
-    border-top: 8px solid #FF69B4; /* Borde rosa (tu primary-pink) */
+    border: 8px solid rgba(255, 215, 0, 0.15);
+    border-top: 8px solid #FFD700;
     border-radius: 50%;
     width: 80px;
     height: 80px;
@@ -231,17 +272,28 @@ h2 {
   }
 
 .text-with-shadow span, .text-with-shadow {
-    text-shadow: 5px 5px 10px rgb(0, 0, 0);
-  }
+    text-shadow: 0 2px 6px rgba(0,0,0,0.95), 0 4px 18px rgba(0,0,0,0.85);
+}
+
+/* Legibilidad general en todas las secciones */
+#bg-sections p,
+#bg-sections li,
+#bg-sections a:not(.inline-block) {
+    text-shadow: 0 2px 8px rgba(0,0,0,0.95), 0 4px 20px rgba(0,0,0,0.75);
+}
+
+#bg-sections section {
+    background: rgba(5, 13, 30, 0.25);
+}
 
 
-  /* 1. Animación de Brillo (Glow) */
+  /* 1. Animación de Brillo (Glow) — Cenicienta dorado */
 @keyframes resplandor {
-    0%, 100% { 
-        text-shadow: 0 0 10px rgba(255, 105, 180, 0.4), 0 0 20px rgba(255, 105, 180, 0.2); 
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.2), 0 0 5px rgba(74, 144, 217, 0.2);
     }
-    50% { 
-        text-shadow: 0 0 20px rgba(255, 105, 180, 0.9), 0 0 30px rgba(255, 105, 180, 0.6); 
+    50% {
+        text-shadow: 0 0 25px rgba(255, 215, 0, 0.9), 0 0 45px rgba(255, 215, 0, 0.6), 0 0 65px rgba(255, 215, 0, 0.3), 0 0 15px rgba(74, 144, 217, 0.4);
     }
 }
 
@@ -274,11 +326,114 @@ h2 {
     animation: flotar 4s ease-in-out infinite; /* Mantiene la animación */
 }
 
+/* ─── Background responsive por breakpoint ────────────────────────── */
+#bg-sections {
+    background-image: url('./assets/img/main_section_background.jpeg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@media (min-width: 1024px) {
+    #bg-sections {
+        background-image: url('./assets/img/main_section_background2.jpeg');
+        background-size: 60% auto;
+        background-repeat: no-repeat;
+        background-position: top center;
+    }
+}
+/* ─────────────────────────────────────────────────────────────────── */
+
+/* ─── Cuenta regresiva mágica ─────────────────────────────────────── */
+.countdown-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 128px;
+    height: 128px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 215, 0, 0.28);
+    border-radius: 20px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.35),
+        inset 0 0 20px rgba(255, 215, 0, 0.06),
+        inset 0 0 60px rgba(74, 144, 217, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    animation: card-breathe 4s ease-in-out infinite;
+}
+
+.countdown-card:hover {
+    transform: translateY(-6px) scale(1.06);
+    border-color: rgba(255, 215, 0, 0.65);
+    box-shadow:
+        0 16px 45px rgba(0, 0, 0, 0.45),
+        inset 0 0 30px rgba(255, 215, 0, 0.18),
+        0 0 60px rgba(255, 215, 0, 0.12);
+}
+
+.countdown-number {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #FFD700;
+    text-shadow:
+        0 0 18px rgba(255, 215, 0, 0.7),
+        0 0 35px rgba(255, 215, 0, 0.35);
+}
+
+.countdown-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(200, 225, 255, 0.75);
+    margin-top: 0.45rem;
+}
+
+.countdown-separator {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: rgba(255, 215, 0, 0.45);
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.35);
+    animation: blink-sep 1.2s ease-in-out infinite;
+    user-select: none;
+    margin-bottom: 28px;
+}
+
+@keyframes blink-sep {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.15; }
+}
+
+@keyframes card-breathe {
+    0%, 100% {
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.35),
+            inset 0 0 20px rgba(255, 215, 0, 0.06);
+    }
+    50% {
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.35),
+            inset 0 0 30px rgba(255, 215, 0, 0.14),
+            0 0 50px rgba(74, 144, 217, 0.08);
+    }
+}
+
+@media (max-width: 640px) {
+    .countdown-card { width: 108px; height: 108px; }
+    .countdown-number { font-size: 2.4rem; }
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+
 .styled-photo {
-    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
-    height: 100%; /* La imagen ocupa todo el alto del contenedor */
-    object-fit: cover; /* Asegura que la imagen se recorte para llenar el espacio */
-    object-position: center; /* Centra la imagen */
-    border-radius: 10px; /* Bordes redondeados para la imagen */
-    border: 5px solid #a968df; /* Borde dorado alrededor de la imagen */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    border: 5px solid #FFD700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
 }

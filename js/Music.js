@@ -28,35 +28,44 @@ document.addEventListener('DOMContentLoaded', () => {
         // Desactivar scroll del body al inicio mientras el modal esté visible
         document.body.style.overflow = 'hidden';
 
-        // Listener para el botón "Sí, ¡claro!" del modal
+        function closeModal() {
+            welcomeModal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            // Inicializa AOS recién ahora, cuando el modal ya cerró
+            setTimeout(() => {
+                if (typeof AOS !== 'undefined') {
+                    AOS.init({
+                        duration: 1200,
+                        once: true,
+                        mirror: false,
+                        offset: 120,
+                        easing: 'ease-in-out',
+                    });
+                }
+            }, 950);
+        }
+
+        // Listener para el botón "Sí, con música"
         playMusicButtonModal.addEventListener('click', () => {
             music.play().then(() => {
                 isPlaying = true;
-                console.log("Música reproducida con éxito por interacción del modal.");
-                // Oculta el modal y permite el scroll
-                welcomeModal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-                updateToggleButtonUI(); // Actualiza el botón flotante a estado de "pausa"
+                closeModal();
+                updateToggleButtonUI();
             }).catch(e => {
-                console.warn("Error al intentar reproducir la música (posible bloqueo de autoplay aún con interacción):", e);
-                // Si aún con el clic del usuario hay un problema, cerramos el modal y mostramos alerta
-                welcomeModal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-                updateToggleButtonUI(); // Asegura que el botón flotante muestre "play"
-                alert("Tu navegador ha bloqueado la reproducción automática de la música. Puedes intentar activarla manualmente con el botón flotante.");
+                console.warn("Error al reproducir música:", e);
+                closeModal();
+                updateToggleButtonUI();
+                alert("Tu navegador bloqueó la reproducción automática. Podés activarla con el botón flotante.");
             });
         });
 
-        // Listener para el botón "No, gracias" del modal
+        // Listener para el botón "Ingresar sin música"
         noMusicButtonModal.addEventListener('click', () => {
-            music.pause(); // Asegúrate de que no se reproduzca
-            music.currentTime = 0; // Reinicia el audio
+            music.pause();
+            music.currentTime = 0;
             isPlaying = false;
-            console.log("Música no reproducida por elección del usuario.");
-            // Oculta el modal y permite el scroll
-            welcomeModal.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            updateToggleButtonUI(); // Asegura que el botón flotante muestre "play"
+            closeModal();
+            updateToggleButtonUI();
         });
 
         // Listener para el botón flotante principal (controla play/pause después del modal)

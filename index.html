@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nicole - ¡Mis 15 años! </title>
+    <title>Paulina - ¡Mis 15 años! ✨ Cenicienta</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Italianno&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
@@ -28,13 +28,17 @@
                         'inter': ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        'primary-purple': '#000000',
-                        'dark-gray': '#000000',
-                        'light-gray-bg': '#f5f5f5',
-                        'dark-purple': '#000000',
-                        'accent-gold': '#ffd700',
-                        'theme-lila': '#EADCF8',
-                        'theme-pink': '#F8DCE8',
+                        'primary-purple': '#0d1b3e',
+                        'dark-gray': '#0d1b3e',
+                        'light-gray-bg': '#050d1e',
+                        'dark-purple': '#0d1b3e',
+                        'accent-gold': '#FFD700',
+                        'theme-lila': '#1a3a6b',
+                        'theme-pink': '#4A90D9',
+                        'cinderella-blue': '#4A90D9',
+                        'fairy-gold': '#FFD700',
+                        'midnight': '#050d1e',
+                        'primary-pink': '#FFD700',
                     }
                 }
             }
@@ -44,33 +48,64 @@
 </head>
 <body class="font-dm-sans text-black bg-light-gray-bg tracking-wide min-h-screen antialiased">
 
+    <div id="particles-container" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; pointer-events: none;"></div>
+
     <div id="preloader" class="fixed inset-0 bg-dark-purple z-[9999] flex justify-center items-center">
         <div class="loader"></div>
     </div>
     
     <div id="welcomeModal" class="modal-overlay">
-        <div class="modal-content">
-            <h3 class="font-great-vibes text-6xl text-primary-pink mb-6"> ¡Bienvenidos! </h3>
-            <p class="font-inter text-lg text-dark-gray mb-8">🌺 Hay un sonido que forma parte de esta experiencia… ¿Te gustaría escucharlo?</p>
-            <div class="flex justify-center gap-4">
-                <button id="playMusicButtonModal" class="bg-green-500 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
-                    Sí, ¡claro!
+        <!-- Video de fondo -->
+        <video autoplay loop muted playsinline
+               style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+            <source src="./assets/video/video_bg.mp4" type="video/mp4">
+        </video>
+        <!-- Overlay oscuro -->
+        <div style="position: absolute; inset: 0; background: rgba(5,13,30,0.72); z-index: 0;"></div>
+
+        <!-- Contenido central -->
+        <div class="welcome-content">
+            <p class="tracking-widest text-sm mb-5" style="color: rgba(255,215,0,0.55);">✦ · ✦ · ✦</p>
+
+            <h1 class="font-great-vibes text-6xl sm:text-7xl md:text-8xl text-white mb-3 animar-brillo">
+                Paulina Gutiérrez
+            </h1>
+
+            <p class="font-great-vibes text-2xl sm:text-3xl mb-7" style="color: rgba(255,255,255,0.75);">
+                ¡Mis 15 años!
+            </p>
+
+            <p class="mb-7 text-lg" style="color: rgba(255,215,0,0.45); letter-spacing: 0.2em;">⸻ ✦ ⸻</p>
+
+            <p class="font-inter text-base sm:text-lg text-white mb-10 leading-relaxed px-4" style="opacity: 0.82;">
+                Con todo mi cariño te invito a compartir este cuento tan especial
+            </p>
+
+            <p class="text-sm mb-5 tracking-wider" style="color: rgba(255,255,255,0.45);">
+                🎶 ¿Querés escuchar la melodía del cuento?
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button id="playMusicButtonModal" class="welcome-btn-primary">
+                    ✦ &nbsp;Sí, con música
                 </button>
-                <button id="noMusicButtonModal" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
-                    No, gracias
+                <button id="noMusicButtonModal" class="welcome-btn-ghost">
+                    Ingresar sin música
                 </button>
             </div>
-            <p id="loadingMessage" class="text-sm text-gray-600 mt-6 hidden">Cargando...</p>
+
+            <p id="loadingMessage" class="text-sm mt-6 hidden" style="color: rgba(255,255,255,0.45);">Cargando...</p>
         </div>
+
     </div>
     <button id="musicToggleButton" aria-label="Reproducir o pausar música">
         <i class="fas fa-music"></i> 
     </button>
     <audio id="music" loop preload="auto">
-        <source src="./assets/audio/Veo_en_ti_la_luz-Chayanne.mp3" type="audio/mpeg">
+        <source src="./assets/audio/La Valse de L'Amour - Patrick Doyle.mp3" type="audio/mpeg">
         Tu navegador no soporta la etiqueta audio de...
     </audio>
-    <div class="max-w-screen-xl mx-auto bg-white shadow-lg overflow-hidden text-with-shadow">
+    <div class="max-w-screen-xl mx-auto shadow-lg overflow-hidden text-with-shadow" style="background-color: #050d1e;">
         
         <section id="portada" class="relative h-screen flex flex-col items-center justify-center text-center text-white overflow-hidden">
             <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
@@ -82,7 +117,7 @@
 
             <div class="relative z-10 p-8">
                 <h1 class="font-great-vibes tracking-wide text-6xl sm:text-7xl md:text-8xl mb-4 animar-brillo" data-aos="zoom-in" data-aos-duration="1500">
-                    Gianina Nicole Aguirre
+                    Paulina Gutiérrez
                 </h1>
                 
                 <p class="font-kalam text-3xl sm:text-4xl md:text-5xl drop-shadow-md animar-flote" data-aos="fade-right" data-aos-delay="500">
@@ -90,17 +125,17 @@
                 </p>
                 
                 <p class="font-kalam mt-8 text-xl sm:text-2xl font-light" data-aos="fade-left" data-aos-delay="1000">
-                    Con cariño te invito a compartir este día tan especial.
+                    Esta noche, el carruaje espera y el cuento está a punto de comenzar.
                 </p>
             </div>
 
             <div class="absolute bottom-8 z-10 flex flex-col items-center text-white text-lg">
-                <p>Desplazar hacia abajo</p>
+                <p>Seguí el camino de las estrellas</p>
                 <i class="fas fa-chevron-down text-3xl animate-bounce-scroll"></i>
             </div>
             </section>
         
-            <div class="bg-dark-purple bg-contain bg-no-repeat bg-center bg-fixed" style="background-image: url('./assets/img/main_section_background.png');">
+            <div id="bg-sections" class="bg-dark-purple bg-center bg-fixed">
 
             <!-- <section id="ceremonia-religiosa" class="relative py-16 px-6 bg-dark-gray/50 text-white text-center">
                 
@@ -119,51 +154,59 @@
 
             <section id="recepcion" class="relative py-16 px-6 text-white text-center ">
                 <div class="max-w-3xl mx-auto">
-                    <img src="./assets/img/reciencasados.png" alt="recien casados" class="rounded-full w-56 h-56 mb-6 mx-auto animate-pulse" data-aos="flip-up" data-aos-duration="1000">
-                    <h2 class="font-great-vibes text-5xl sm:text-6xl text-primary-pink mb-6" data-aos="fade-up" data-aos-delay="200">Fiesta</h2>
-                    <!-- <p class="text-xl sm:text-2xl font-light mb-4" data-aos="fade-up" data-aos-delay="300"><span >SALÓN:</span> XXXXXX </p> -->
-                    <p class="text-xl sm:text-2xl font-light mb-4" data-aos="fade-up" data-aos-delay="400"><span>UBICACIÓN:</span> Santiago 3202, San Miguel de Tuc.</p>
-                    <p class="text-xl sm:text-2xl font-light mb-8" data-aos="fade-up" data-aos-delay="500"><span>DIA:</span> 25/04/2026</p>
+                    <img src="./assets/img/party.png" alt="El Gran Baile" class="rounded-full w-56 h-56 mb-6 mx-auto animate-pulse" data-aos="flip-up" data-aos-duration="1000">
+                    <h2 class="font-great-vibes text-5xl sm:text-6xl text-primary-pink mb-6" data-aos="fade-up" data-aos-delay="200">El Gran Baile</h2>
+                    <p class="text-xl sm:text-2xl font-light mb-4" data-aos="fade-up" data-aos-delay="300"><span>SALÓN:</span> Recorcholis</p>
+                    <p class="text-xl sm:text-2xl font-light mb-4" data-aos="fade-up" data-aos-delay="400"><span>UBICACIÓN:</span> Avenida Aconquija 1493</p>
+                    <p class="text-xl sm:text-2xl font-light mb-8" data-aos="fade-up" data-aos-delay="500"><span>DÍA:</span> 16/08/2026</p>
                     <p class="text-xl sm:text-2xl font-light mb-8" data-aos="fade-up" data-aos-delay="600"><span>HORARIO:</span> 22:00 HS ¡Puntual!</p>
-                    <a href="https://maps.app.goo.gl/icYTsCfihM2pyViSA" target="_blank" class="inline-block bg-green-500 hover:bg-pink-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105" data-aos="zoom-in" data-aos-delay="700">
+                    <a href="https://maps.app.goo.gl/pUH2zWRfM9W3oysu7" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105" data-aos="zoom-in" data-aos-delay="700">
                         VER UBICACIÓN
                     </a>
                 </div>
             </section>
 
-            <section id="countdown" class="relative py-16 px-6 bg-dark-gray/50 text-white text-center">
-                <div class="max-w-4xl mx-auto">
-                    <h2 class="font-great-vibes text-5xl sm:text-6xl text-primary-pink mb-10" data-aos="fade-down" data-aos-duration="1000">¡Pronto el gran día!</h2>
-                    
-                    <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-10 text-dark-gray mt-8 mb-12">
-                        <div class="flex flex-col items-center bg-white p-6 rounded-xl shadow-xl w-36 h-36 sm:w-44 sm:h-44 transform hover:scale-105 transition-transform duration-300" data-aos="fade-up" data-aos-delay="100">
-                            <p id="days" class="text-5xl font-bold text-dark-gray"></p>
-                            <span class="text-lg mt-2 font-medium text-gray-600">Días</span>
+            <section id="countdown" class="relative py-20 px-6 text-white text-center overflow-hidden">
+                <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(74,144,217,0.1) 0%, transparent 70%);"></div>
+
+                <div class="max-w-4xl mx-auto relative z-10">
+                    <img src="./assets/img/countdown.png" alt="Cuenta regresiva" class="rounded-full w-56 h-56 mb-6 mx-auto animate-pulse" data-aos="zoom-in" data-aos-duration="600">
+                    <h2 class="font-great-vibes text-5xl sm:text-6xl text-primary-pink mb-2" data-aos="fade-down" data-aos-duration="1000">Antes de que den las doce...</h2>
+                    <p class="text-2xl opacity-60 mb-10 tracking-widest" data-aos="fade-in" data-aos-delay="200">✦ · ✦ · ✦</p>
+
+                    <div class="flex flex-wrap justify-center items-center gap-4 md:gap-3 mt-4 mb-10">
+                        <div class="countdown-card" data-aos="zoom-in" data-aos-delay="100">
+                            <p id="days" class="countdown-number"></p>
+                            <span class="countdown-label">Días</span>
                         </div>
-                        <div class="flex flex-col items-center bg-white p-6 rounded-xl shadow-xl w-36 h-36 sm:w-44 sm:h-44 transform hover:scale-105 transition-transform duration-300" data-aos="fade-up" data-aos-delay="200">
-                            <p id="hours" class="text-5xl font-bold text-dark-gray"></p>
-                            <span class="text-lg mt-2 font-medium text-gray-600">Horas</span>
+                        <div class="countdown-separator hidden md:block">:</div>
+                        <div class="countdown-card" data-aos="zoom-in" data-aos-delay="200">
+                            <p id="hours" class="countdown-number"></p>
+                            <span class="countdown-label">Horas</span>
                         </div>
-                        <div class="flex flex-col items-center bg-white p-6 rounded-xl shadow-xl w-36 h-36 sm:w-44 sm:h-44 transform hover:scale-105 transition-transform duration-300" data-aos="fade-up" data-aos-delay="300">
-                            <p id="minutes" class="text-5xl font-bold text-dark-gray"></p>
-                            <span class="text-lg mt-2 font-medium text-gray-600">Minutos</span>
+                        <div class="countdown-separator hidden md:block">:</div>
+                        <div class="countdown-card" data-aos="zoom-in" data-aos-delay="300">
+                            <p id="minutes" class="countdown-number"></p>
+                            <span class="countdown-label">Minutos</span>
                         </div>
-                        <div class="flex flex-col items-center bg-white p-6 rounded-xl shadow-xl w-36 h-36 sm:w-44 sm:h-44 transform hover:scale-105 transition-transform duration-300" data-aos="fade-up" data-aos-delay="400">
-                            <p id="sec" class="text-5xl font-bold text-dark-gray"></p>
-                            <span class="text-lg mt-2 font-medium text-gray-600">Segundos</span>
+                        <div class="countdown-separator hidden md:block">:</div>
+                        <div class="countdown-card" data-aos="zoom-in" data-aos-delay="400">
+                            <p id="sec" class="countdown-number"></p>
+                            <span class="countdown-label">Segundos</span>
                         </div>
                     </div>
-                    <p class="mt-12 text-lg sm:text-xl max-w-2xl mx-auto font-inter leading-relaxed" data-aos="fade-in" data-aos-delay="500"><span>Con vos compartiendo este momento, será aún más significativo. ¡Te espero!</span></p>
+
+                    <p class="mt-8 text-lg sm:text-xl max-w-2xl mx-auto font-inter leading-relaxed opacity-90" data-aos="fade-in" data-aos-delay="500"><span>Cuando el reloj marque las doce, el cuento habrá comenzado. ¡Te espero!</span></p>
                 </div>
             </section>
 
             <section id="confirmacion" class="relative py-16 px-6 text-white text-center">
                 
                 <div class="relative z-10 max-w-3xl mx-auto">
-                    <img src="./assets/img/sobre_morado.jpg" alt="sobre_morado" class="rounded-full w-56 h-56 mb-6 mx-auto animate-pulse" data-aos="zoom-in" data-aos-duration="1000">
-                    <h2 class="font-great-vibes text-5xl sm:text-6xl mb-6 text-primary-pink" data-aos="fade-right" data-aos-delay="200">Confirmá tu Asistencia</h2>
-                    <p class="text-xl sm:text-2xl font-light mb-8" data-aos="fade-left" data-aos-delay="400">¡Tu presencia es muy importante para mí! Por favor, confirmá tu asistencia antes del <span>20 de Abril</span>.</p>
-                        <a href="https://wa.me/5493813651476" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    <img src="./assets/img/check.png" alt="Confirmá tu asistencia" class="rounded-full w-56 h-56 mb-6 mx-auto animate-pulse" data-aos="zoom-in" data-aos-duration="1000">
+                    <h2 class="font-great-vibes text-5xl sm:text-6xl mb-6 text-primary-pink" data-aos="fade-right" data-aos-delay="200">¿Vendrás al Baile?</h2>
+                    <p class="text-xl sm:text-2xl font-light mb-8" data-aos="fade-left" data-aos-delay="400">El carruaje ya está listo… ¿Vendrás al baile? Confirmá tu asistencia antes del <span>10 de Agosto</span>.</p>
+                        <a href="https://wa.me/5493816460198" target="_blank" class="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
                             <i class="fab fa-whatsapp" style="font-size:16px"></i> CONFIRMAR ASISTENCIA
                         </a>
                 </div>
@@ -171,32 +214,35 @@
 
             <section id="dress-code-section" class="relative py-16 px-6 bg-dark-gray/50 text-white text-center">
                 <div class="max-w-3xl mx-auto">
-                    <img src="./assets/img/camaleon.jpg" alt="Dress Code" class="rounded-full w-56 h-56 mb-6 mx-auto animate-pulse" data-aos="zoom-in" data-aos-duration="1000">
-                    <h2 class="font-great-vibes text-5xl sm:text-6xl text-primary-pink mb-6" data-aos="fade-up" data-aos-delay="200">Dress Code</h2>
-                    <p class="text-xl sm:text-2xl font-light mb-4" data-aos="fade-up" data-aos-delay="400">Pedimos asistir con vestimenta **Elegante-Sport**.</p>
-                    <p class="text-xl sm:text-2xl font-light mb-4" data-aos="fade-up" data-aos-delay="400">Color Lila reservado para Nicole.</p>
+                    <img src="./assets/img/dresscode.png" alt="Vestimenta para el Gran Baile" class="rounded-full w-56 h-56 mb-6 mx-auto animate-pulse" data-aos="zoom-in" data-aos-duration="1000">
+                    <h2 class="font-great-vibes text-5xl sm:text-6xl text-primary-pink mb-6" data-aos="fade-up" data-aos-delay="200">Vestimenta para el Gran Baile</h2>
+                    <p class="text-xl sm:text-2xl font-light mb-4" data-aos="fade-up" data-aos-delay="400">Pedimos asistir con vestimenta <span>Elegante</span>.</p>
+                    
                 </div>
             </section>
 
             <section id="regalos" class="relative py-16 px-6 text-white text-center">
                 <div class="max-w-3xl mx-auto">
-                    <img src="./assets/img/gifbox.gif" alt="caja de regalos" class="rounded-full w-56 h-56 mb-6 mx-auto animate-pulse" data-aos="flip-right" data-aos-duration="1000">
-                    <h2 class="font-great-vibes text-5xl sm:text-6xl text-primary-pink mb-6" data-aos="fade-down" data-aos-delay="200">Regalos</h2>
+                    <img src="./assets/img/Gift.png" alt="Un detalle para la princesa" class="rounded-full w-56 h-56 mb-6 mx-auto animate-pulse" data-aos="flip-right" data-aos-duration="1000">
+                    <h2 class="font-great-vibes text-5xl sm:text-6xl text-primary-pink mb-6" data-aos="fade-down" data-aos-delay="200">Un detalle para la princesa</h2>
                     <p class="text-xl sm:text-2xl font-light mb-8 font-bold" data-aos="fade-up" data-aos-delay="400">Tu presencia es el mejor regalo en este día tan especial.
                         Si querés acompañarme con un detalle para esta nueva etapa, lo voy a recibir con mucho cariño. ¡Gracias por ser parte de este momento!
                         </p>
-                    <p class="text-xl sm:text-2xl font-light mb-8"> <span>Cofre a disposición en el salon</span></p>
-                    <p class="text-xl sm:text-2xl font-light mb-8"> <span>Alias: MisXV.NicoleAguirre</span></p>
+                    <p class="text-xl sm:text-2xl font-light mb-4"><span>Alias: paupauu.</span></p>
+                    <p class="text-xl sm:text-2xl font-light mb-8">También habrá un cofre disponible en el salón. 🎁</p>
                 </div>
             </section>
 
             <section id="book" class="relative py-16 px-6 text-white text-center">
                 <div class="max-w-3xl mx-auto">
-                    <h2 class="font-great-vibes text-5xl sm:text-6xl text-primary-pink mb-6" data-aos="fade-up" data-aos-duration="1000">Un momento único ♥</h2>
-                    <p class="text-xl sm:text-2xl font-light mb-8 font-bold" data-aos="fade-left" data-aos-delay="500">Entre luces, risas y sueños, este día se convierte en recuerdo. Y vos sos parte de él.</p>
+                    <h2 class="font-great-vibes text-5xl sm:text-6xl text-primary-pink mb-6" data-aos="fade-up" data-aos-duration="1000">Momentos mágicos ✨</h2>
+                    <p class="text-xl sm:text-2xl font-light mb-8 font-bold" data-aos="fade-left" data-aos-delay="500">Como en todo buen cuento, los momentos más bellos quedan guardados para siempre. Y vos sos parte de esta historia.</p>
                     
                     <div class="slider" data-aos="fade-up" data-aos-delay="800">
-                        <img src="./assets/img/foto_1.jpg" alt="foto 1" class="styled-photo">
+                        <div class="styled-photo flex flex-col items-center justify-center text-white" style="background: linear-gradient(135deg, #0d1b3e 0%, #1a3a6b 100%);">
+                            <span style="font-size: 4rem;">✨</span>
+                            <p class="font-great-vibes text-2xl mt-2" style="color: #FFD700;">Próximamente...</p>
+                        </div>
 
                         <!--<ul>
                             <li>
@@ -283,8 +329,8 @@
 
             <section id="footer" class="relative py-16 px-6 bg-dark-gray/70 text-white text-center">
                 <div class="max-w-3xl mx-auto">
-                    <h2 class="font-great-vibes text-5xl sm:text-6xl mb-6">¡Gracias!</h2>
-                    <p class="text-xl sm:text-4xl font-great-vibes mb-6">Nicole Aguirre</p>
+                    <h2 class="font-great-vibes text-5xl sm:text-6xl mb-6">¡Gracias por ser parte de este cuento!</h2>
+                    <p class="text-xl sm:text-4xl font-great-vibes mb-6">Paulina Gutiérrez</p>
                     <p class="text-md sm:text-lg opacity-80 mt-8">© 2026 - Todos los derechos reservados.</p>
                     
                     <p class="text-sm opacity-70 mt-6">
@@ -300,13 +346,7 @@
     
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 1200, 
-            once: true, 
-            mirror: false, 
-            offset: 120, 
-            easing: 'ease-in-out', 
-        });
+        // AOS se inicializa desde Music.js luego de que el modal cierre
     </script>
     
     <script src="./js/Preloader.js"></script>
@@ -314,6 +354,33 @@
     <script src="./js/Music.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+    <script>
+        tsParticles.load("particles-container", {
+            fullScreen: { enable: false },
+            particles: {
+                number: { value: 55, density: { enable: true, area: 900 } },
+                color: { value: ["#FFD700", "#FFF8DC", "#FFFACD", "#ffffff", "#4A90D9", "#C8E6FF"] },
+                shape: { type: ["star", "circle"] },
+                opacity: {
+                    value: { min: 0.15, max: 0.7 },
+                    animation: { enable: true, speed: 0.25, sync: false }
+                },
+                size: { value: { min: 1, max: 3.5 } },
+                move: {
+                    enable: true,
+                    speed: 0.15,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    outModes: "out",
+                    drift: 0.2
+                },
+                twinkle: { particles: { enable: true, frequency: 0.06, opacity: 1 } }
+            },
+            background: { opacity: 0 }
+        });
+    </script>
 
     <script>
         console.log("%c¡Hola! 👋 Si estás viendo esto, probablemente seas un desarrollador curioso. ¡Qué bueno que te hayas detenido aquí! Si tienes alguna pregunta o simplemente quieres saludar, no dudes en contactarme - Fabian 3813852485. ¡Feliz codificación! 💻✨", "color: #6b46c1; font-size: 16px; font-weight: bold;");
