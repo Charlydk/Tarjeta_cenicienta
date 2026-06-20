@@ -1,3 +1,73 @@
+/* ─── Waltograph font ─────────────────────────────────────────────── */
+@font-face {
+    font-family: 'LoveFairy';
+    src: url('./assets/fonts/love_fairy/LoveFairy.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    /* Letters only — numbers and symbols fall back to Georgia */
+    unicode-range: U+0020, U+0041-005A, U+0061-007A,
+                   U+00C0-00D6, U+00D8-00F6, U+00F8-00FF,
+                   U+00A1, U+00BF, U+2018-2019, U+201C-201D, U+2026;
+}
+
+@font-face {
+    font-family: 'ThePrincess';
+    src: url('./assets/fonts/the_princess/ThePrincess-PersonalUse.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Adlery';
+    src: url('./assets/fonts/adlery/Adlery_TRIAL.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Amsterdam';
+    src: url('./assets/fonts/amsterdam/Amsterdam Personal Use.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Fairies';
+    src: url('./assets/fonts/fairies/Fairies.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FairyDustB';
+    src: url('./assets/fonts/fairydustb/FairyDustB.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Waltograph';
+    src: url('./assets/fonts/waltograph42.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'WaltographUI';
+    src: url('./assets/fonts/waltographUI.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+/* ─────────────────────────────────────────────────────────────────── */
+
 /* Estilos adicionales para el modal (puedes ajustarlos con Tailwind si prefieres) */
 .modal-overlay {
     position: fixed;
@@ -14,7 +84,7 @@
     opacity: 1;
     visibility: visible;
     transition: opacity 0.9s ease, visibility 0.9s ease;
-    background-color: #050d1e;
+    background-color: #000000;
 }
 .modal-overlay.hidden {
     opacity: 0;
@@ -28,7 +98,7 @@
     padding: 2.5rem 2rem;
     max-width: 680px;
     width: 100%;
-    background: rgba(5, 13, 30, 0.35);
+    background: rgba(0, 0, 0, 0.35);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border-radius: 20px;
@@ -114,14 +184,28 @@
 }
 
 
+html {
+    font-size: 20px;
+}
+
+body {
+    font-family: 'LoveFairy', Georgia, serif;
+    letter-spacing: 0.01em;
+}
+
+h1, h2 {
+    font-family: 'LoveFairy', cursive !important;
+}
+
 span {
-    font-weight: bold;
+    font-weight: normal;
+    color: #FFD700;
 }
 
 h2 {
     font-weight: bold;
     text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 2px 2px 6px rgba(0, 0, 0, 0.9);
-    background-color: rgba(5, 13, 30, 0.55);
+    background-color: rgba(0, 0, 0, 0.55);
     padding: 5px 10px;
     border-radius: 8px;
 }
@@ -283,7 +367,7 @@ h2 {
 }
 
 #bg-sections section {
-    background: rgba(5, 13, 30, 0.25);
+    background: rgba(0, 0, 0, 0.25);
 }
 
 
@@ -325,6 +409,24 @@ h2 {
     padding: 10px; /* Espaciado interno para el marco */
     animation: flotar 4s ease-in-out infinite; /* Mantiene la animación */
 }
+
+/* ─── Footer fine print ───────────────────────────────────────────── */
+#footer p:not(.font-great-vibes) {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 0.04em;
+    opacity: 0.5;
+}
+/* ─────────────────────────────────────────────────────────────────── */
+
+/* ─── Intro section legibility ────────────────────────────────────── */
+#intro p {
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,1), 0 4px 25px rgba(0,0,0,0.95);
+    line-height: 1.9;
+}
+/* ─────────────────────────────────────────────────────────────────── */
 
 /* ─── Background responsive por breakpoint ────────────────────────── */
 #bg-sections {
@@ -387,7 +489,7 @@ h2 {
     font-size: 0.7rem;
     font-weight: 600;
     letter-spacing: 0.18em;
-    text-transform: uppercase;
+    text-transform: capitalize;
     color: rgba(200, 225, 255, 0.75);
     margin-top: 0.45rem;
 }
@@ -426,6 +528,48 @@ h2 {
     .countdown-number { font-size: 2.4rem; }
 }
 
+/* ─────────────────────────────────────────────────────────────────── */
+
+/* ─── Sparkle cross stars ─────────────────────────────────────────── */
+.sparkle {
+    position: absolute;
+    pointer-events: none;
+    animation-name: sparkle-twinkle;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    opacity: 0;
+}
+
+.sparkle::before,
+.sparkle::after {
+    content: '';
+    position: absolute;
+    border-radius: 9999px;
+}
+
+.sparkle::before {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, transparent 70%);
+}
+
+.sparkle::after {
+    height: 100%;
+    width: 2px;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.95) 0%, transparent 70%);
+}
+
+@keyframes sparkle-twinkle {
+    0%, 100%  { opacity: 0;   transform: scale(0.2); }
+    40%, 60%  { opacity: 1;   transform: scale(1);   }
+}
 /* ─────────────────────────────────────────────────────────────────── */
 
 .styled-photo {
